@@ -1,0 +1,184 @@
+norest@GE63-7RD:~$ cd repos/
+norest@GE63-7RD:~/repos$ mkdir -p ProjectX/{docs/{reports,images},src/{html,css,js},data}
+norest@GE63-7RD:~/repos$ xdg-open .
+norest@GE63-7RD:~/repos$ cd ProjectX/
+norest@GE63-7RD:~/repos/ProjectX$ tree
+.
+├── data
+├── docs
+│   ├── images
+│   └── reports
+└── src
+    ├── css
+    ├── html
+    └── js
+
+9 directories, 0 files
+norest@GE63-7RD:~/repos/ProjectX$ echo "Hello Data" >> data/data.txt
+norest@GE63-7RD:~/repos/ProjectX$ tree
+.
+├── data
+│   └── data.txt
+├── docs
+│   ├── images
+│   └── reports
+└── src
+    ├── css
+    ├── html
+    └── js
+
+9 directories, 1 file
+norest@GE63-7RD:~/repos/ProjectX$ touch docs/reports/{report_one.txt,report_two.txt} src/css/style.css src/html/index.html src/js/script.js
+norest@GE63-7RD:~/repos/ProjectX$ tree
+.
+├── data
+│   └── data.txt
+├── docs
+│   ├── images
+│   └── reports
+│       ├── report_one.txt
+│       └── report_two.txt
+└── src
+    ├── css
+    │   └── style.css
+    ├── html
+    │   └── index.html
+    └── js
+        └── script.js
+
+9 directories, 6 files
+norest@GE63-7RD:~/repos/ProjectX$ touch docs/images/.gitkeep
+norest@GE63-7RD:~/repos/ProjectX$ tree
+.
+├── data
+│   └── data.txt
+├── docs
+│   ├── images
+│   └── reports
+│       ├── report_one.txt
+│       └── report_two.txt
+└── src
+    ├── css
+    │   └── style.css
+    ├── html
+    │   └── index.html
+    └── js
+        └── script.js
+
+9 directories, 6 files
+norest@GE63-7RD:~/repos/ProjectX$ git init
+Initialized empty Git repository in /home/norest/repos/ProjectX/.git/
+norest@GE63-7RD:~/repos/ProjectX$ git add .
+norest@GE63-7RD:~/repos/ProjectX$ git commit -m "ProjectX initial setup"
+[main (root-commit) 1bc0619] ProjectX initial setup
+ 7 files changed, 1 insertion(+)
+ create mode 100644 data/data.txt
+ create mode 100644 docs/images/.gitkeep
+ create mode 100644 docs/reports/report_one.txt
+ create mode 100644 docs/reports/report_two.txt
+ create mode 100644 src/css/style.css
+ create mode 100644 src/html/index.html
+ create mode 100644 src/js/script.js
+norest@GE63-7RD:~/repos/ProjectX$ git remote add origin git@github.com:DarkPix3l/ProjectX.git
+git branch -M main
+git push -u origin main
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (12/12), 774 bytes | 193.00 KiB/s, done.
+Total 12 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To github.com:DarkPix3l/ProjectX.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+norest@GE63-7RD:~/repos/ProjectX$ git add README.md
+fatal: pathspec 'README.md' did not match any files
+norest@GE63-7RD:~/repos/ProjectX$ echo "# ProjectX" >> README.md
+norest@GE63-7RD:~/repos/ProjectX$ git add . 
+norest@GE63-7RD:~/repos/ProjectX$ git commit -m "add readme file"
+[main 392a049] add readme file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+norest@GE63-7RD:~/repos/ProjectX$ git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 355 bytes | 355.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To github.com:DarkPix3l/ProjectX.git
+   1bc0619..392a049  main -> main
+   
+norest@GE63-7RD:~/repos/ProjectX$ code .
+norest@GE63-7RD:~/repos/ProjectX$ git branch boilerplate
+norest@GE63-7RD:~/repos/ProjectX$ git status 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   src/html/index.html
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	commands_log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+norest@GE63-7RD:~/repos/ProjectX$ git push -u origin boilerplate     
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: 
+remote: Create a pull request for 'boilerplate' on GitHub by visiting:
+remote:      https://github.com/DarkPix3l/ProjectX/pull/new/boilerplate
+remote: 
+To github.com:DarkPix3l/ProjectX.git
+ * [new branch]      boilerplate -> boilerplate
+branch 'boilerplate' set up to track 'origin/boilerplate'.
+norest@GE63-7RD:~/repos/ProjectX$ git branch
+  boilerplate
+* main
+norest@GE63-7RD:~/repos/ProjectX$ git checkout boilerplate 
+Switched to branch 'boilerplate'
+Your branch is up to date with 'origin/boilerplate'.
+norest@GE63-7RD:~/repos/ProjectX$ git branch
+* boilerplate
+  main
+norest@GE63-7RD:~/repos/ProjectX$ git status
+On branch boilerplate
+Your branch is up to date with 'origin/boilerplate'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   src/html/index.html
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	commands_log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+norest@GE63-7RD:~/repos/ProjectX$ git add src/html/index.html 
+norest@GE63-7RD:~/repos/ProjectX$ git commit -m "boilerplate creation"
+[boilerplate d0ba7bb] boilerplate creation
+ 1 file changed, 11 insertions(+)
+norest@GE63-7RD:~/repos/ProjectX$ git status
+On branch boilerplate
+Your branch is ahead of 'origin/boilerplate' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	commands_log.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+norest@GE63-7RD:~/repos/ProjectX$ git push
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 585 bytes | 292.00 KiB/s, done.
+Total 5 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:DarkPix3l/ProjectX.git
+   392a049..d0ba7bb  boilerplate -> boilerplate
+norest@GE63-7RD:~/repos/ProjectX$ exit
